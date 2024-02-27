@@ -1,16 +1,43 @@
-# bountie
+# Object detection using deep learning with OpenCV and Python 
 
-A new Flutter project.
+OpenCV `dnn` module supports running inference on pre-trained deep learning models from popular frameworks like Caffe, Torch and TensorFlow. 
 
-## Getting Started
+When it comes to object detection, popular detection frameworks are
+ * YOLO
+ * SSD
+ * Faster R-CNN
+ 
+ Support for running YOLO/DarkNet has been added to OpenCV dnn module recently. 
+ 
+ ## Dependencies
+  * opencv
+  * numpy
+  
+`pip install numpy opencv-python`
 
-This project is a starting point for a Flutter application.
+**Note: Compatability with Python 2.x is not officially tested.**
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+ ## YOLO (You Only Look Once)
+ 
+ Download the pre-trained YOLO v3 weights file from this [link](https://pjreddie.com/media/files/yolov3.weights) and place it in the current directory or you can directly download to the current directory in terminal using
+ 
+ `$ wget https://pjreddie.com/media/files/yolov3.weights`
+ 
+ Provided all the files are in the current directory, below command will apply object detection on the input image `dog.jpg`.
+ 
+ `$ python yolo_opencv.py --image dog.jpg --config yolov3.cfg --weights yolov3.weights --classes yolov3.txt`
+ 
+ 
+ **Command format** 
+ 
+ _$ python yolo_opencv.py --image /path/to/input/image --config /path/to/config/file --weights /path/to/weights/file --classes /path/to/classes/file_
+ 
+ Checkout the [blog post](http://www.arunponnusamy.com/yolo-object-detection-opencv-python.html) to learn more.
+ 
+ ### sample output :
+ ![](object-detection.jpg)
+ 
+Checkout the object detection implementation available in [cvlib](http:cvlib.net) which enables detecting common objects in the context through a single function call `detect_common_objects()`.
+ 
+ 
+ (_SSD and Faster R-CNN examples will be added soon_)
